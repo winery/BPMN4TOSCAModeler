@@ -1,0 +1,82 @@
+*:focus{
+    outline-color: transparent !important;
+    outline-style: none !important;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+body, html{
+    height: 100%;
+}
+:focus{
+    outline: none;
+}
+.element{
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+}
+.element:hover{
+    border: 1px dotted #000;
+}
+.element.focus{
+    border: 1px dotted red;
+}
+.element.gateway{
+    padding: 5px;
+}
+.canvas{
+    -webkit-overflow-scrolling: touch;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 100%;
+    position: relative;
+    overflow: scroll;
+    z-index: 0;
+}
+.canvas svg path{
+    fill : #000;
+    stroke: #000;
+    stroke-width: 1;
+}
+.canvas svg > *{
+    fill: none;
+    stroke: #000;
+    stroke-linejoin: miter;
+    stroke-location: inside;
+    stroke-width: 1px;
+}
+.canvas .guide{
+    background-color: rgba(0, 255, 255, 0);
+    position: absolute;
+    z-index: 1
+}
+._jsPlumb_connector{
+    z-index: 3;
+}
+.modal form input{
+    width: 100%;
+}
+.toolbar{
+    padding: 10px 30px 0px 10px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 4;
+}
+.toolbar .btn.btn-default:active,
+.toolbar .btn.btn-default:hover{
+    background-color: #FFF;
+}
+.zoom{
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+}
