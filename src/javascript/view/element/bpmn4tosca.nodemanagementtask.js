@@ -23,6 +23,7 @@
 				var data = {
 					name: event.dialog.$el.find("#name").val(),
 					node_operation: event.dialog.$el.find("#node_operation").val(),
+					interface: $(this.$el.find("#node_operation")[0].selectize["$control"][0].firstChild).attr("interface"),
 					node_template: event.dialog.$el.find("#node_template").val(),					
 					input: _.object(_.map(event.dialog.$el.find(".parameter.input"), function(parameter){
 						var json = Backbone.$(parameter).data("parameter").toJSON();
@@ -55,7 +56,15 @@
 			dialog.on("shown", function(event){
 				var nodeOperationDropdown = event.dialog.$el.find("#node_operation").selectize({
 					maxItems: 1,
-					options: []
+					options: [],
+					render: {
+						option: function(item, escape) {
+                            return "<div interface='" + escape(item.interface) + "'>" + escape(item.value) + "</div>";
+						},
+						item: function(item, escape) {
+                            return "<div interface='" + escape(item.interface) + "'>" + escape(item.value) + "</div>";
+                        }
+					}
 				})[0].selectize;
 
 				nodeOperationDropdown.on("change", _.bind(function(value){
@@ -97,7 +106,7 @@
 					this.model.collection.options.winery.nodeTemplateOperations(nodeTemplate, function(operations){
 						nodeOperationDropdown.clearOptions();
 						_.each(operations, function(operation){
-							nodeOperationDropdown.addOption({text: operation.name, id: operation.id, interface: operation.interface, value: operation.name});					
+							nodeOperationDropdown.addOption({text: operation.name, id: operation.id, interface: operation.interface, value: operation.name});
 						});
 						nodeOperationDropdown.refreshOptions(false);
 						nodeOperationDropdown.setValue(event.dialog.model.get("node_operation"));									
