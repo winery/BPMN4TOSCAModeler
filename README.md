@@ -14,12 +14,20 @@ A current pre-build version can be found in the dist folder!
 
 ## Run
 
-Open index.html from dist folder with correct HTTP GET params:
+Execute `grunt serve`.
+Open <http://localhost:9000/dist/index.html> with correct HTTP GET params:
 
 repositoryURL (e.g. http://dev.winery.opentosca.org/winery/)
 namespace (e.g. http://www.example.org/ServiceTemplates)
 id (e.g. PlanDemonstration)
 plan (e.g. Test)
+
+You can also directly embed it into Winery.
+Edit `winery.properties` and add
+
+```
+topologymodeler=http://localhost:9000/dist/index.html
+```
 
 ## More Information on Winery
 
