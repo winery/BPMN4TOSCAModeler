@@ -23,11 +23,12 @@ id (e.g. PlanDemonstration)
 plan (e.g. Test)
 
 You can also directly embed it into Winery.
-Edit `winery.properties` and add
+Ensure that `winery.properties` contains following line.
 
 ```
 bpmn4toscamodelerBaseURI=http://localhost:9000/dist/index.html
 ```
+This has already been done in recent development versions of Winery.
 
 ## More Information on Winery
 
