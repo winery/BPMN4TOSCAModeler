@@ -26,7 +26,7 @@ You can also directly embed it into Winery.
 Edit `winery.properties` and add
 
 ```
-topologymodeler=http://localhost:9000/dist/index.html
+bpmn4toscamodelerBaseURI=http://localhost:9000/dist/index.html
 ```
 
 ## More Information on Winery
