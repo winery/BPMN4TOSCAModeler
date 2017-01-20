@@ -1,3 +1,16 @@
+/*******************************************************************************
+ * Copyright (c) 2015 Thomas Michelbach.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and the Apache License 2.0 which both accompany this distribution,
+ * and are available at http://www.eclipse.org/legal/epl-v10.html
+ * and http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Contributors:
+ *    Thomas Michelbach - initial API and implementation and/or initial documentation
+ *    Armin Hüneburg - add interface of node_operation to json
+ *******************************************************************************/
+
 (function(Application){
 
 	Application.registerElement(Application.View.Element.extend({
@@ -24,7 +37,7 @@
 					name: event.dialog.$el.find("#name").val(),
 					node_operation: event.dialog.$el.find("#node_operation").val(),
 					interface: $(this.$el.find("#node_operation")[0].selectize["$control"][0].firstChild).attr("interface"),
-					node_template: event.dialog.$el.find("#node_template").val(),					
+					node_template: event.dialog.$el.find("#node_template").val(),
 					input: _.object(_.map(event.dialog.$el.find(".parameter.input"), function(parameter){
 						var json = Backbone.$(parameter).data("parameter").toJSON();
 						return [Backbone.$(parameter).data("parameter").name(), json];
@@ -109,7 +122,7 @@
 							nodeOperationDropdown.addOption({text: operation.name, id: operation.id, interface: operation.interface, value: operation.name});
 						});
 						nodeOperationDropdown.refreshOptions(false);
-						nodeOperationDropdown.setValue(event.dialog.model.get("node_operation"));									
+						nodeOperationDropdown.setValue(event.dialog.model.get("node_operation"));
 					});
 
 				}, event.dialog));
@@ -117,12 +130,12 @@
 				event.dialog.model.collection.options.winery.nodeTemplates(function(nodeTemplates){
 					nodeTemplateDropdown.clearOptions();
 					_.each(nodeTemplates, function(nodeTemplate){
-						nodeTemplateDropdown.addOption({text: nodeTemplate.name, id: nodeTemplate.id, namespace: nodeTemplate.namespace, value: nodeTemplate.id});					
+						nodeTemplateDropdown.addOption({text: nodeTemplate.name, id: nodeTemplate.id, namespace: nodeTemplate.namespace, value: nodeTemplate.id});
 					});
 					nodeTemplateDropdown.refreshOptions(false);
-					nodeTemplateDropdown.setValue(event.dialog.model.get("node_template"));					
+					nodeTemplateDropdown.setValue(event.dialog.model.get("node_template"));
 				});
-				
+
 			});
 			dialog.show();
 		}

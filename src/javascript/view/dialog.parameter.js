@@ -1,3 +1,15 @@
+/*******************************************************************************
+ * Copyright (c) 2015 Thomas Michelbach.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and the Apache License 2.0 which both accompany this distribution,
+ * and are available at http://www.eclipse.org/legal/epl-v10.html
+ * and http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Contributors:
+ *    Thomas Michelbach - initial API and implementation and/or initial documentation
+ *******************************************************************************/
+
 (function(Application){
 
 	Application.View.DialogParameter = Backbone.View.extend({
@@ -73,7 +85,7 @@
 				_.each(options, function(option){
 					instance.addOption(option);
 				}, this);
-				
+
 				if((type == "concat")){
 					instance.settings.create = function(input){
 						return {
@@ -163,7 +175,7 @@
 				this.$el.find(".dropdown-menu").append("<li><a href=\"#\" data-event=\"rename\">Rename</a></li>");
 				this.$el.find(".dropdown-menu").append("<li><a href=\"#\" data-event=\"remove\">Remove</a></li>");
 			}
-			
+
 			var parameter = this.fromModel();
 			this.changeSourceType(parameter.type, parameter.value);
 			return this;
@@ -196,7 +208,7 @@
 					onOptionAdd: function(value, data){
 					    this.blur();
 					},
-				    
+
 				    options: [{text: this.options.value, value: this.options.value}],
 
 				    persist: false,
@@ -207,8 +219,8 @@
 							return "<div>" + item.text + "</div>";
 						}
 
-					}			    
-				
+					}
+
 				})[0].selectize;
 				select.setValue(this.options.value);
 				return select;

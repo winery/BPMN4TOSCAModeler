@@ -1,3 +1,15 @@
+/*******************************************************************************
+ * Copyright (c) 2015 Thomas Michelbach.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and the Apache License 2.0 which both accompany this distribution,
+ * and are available at http://www.eclipse.org/legal/epl-v10.html
+ * and http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Contributors:
+ *    Thomas Michelbach - initial API and implementation and/or initial documentation
+ *******************************************************************************/
+
 (function(Application){
 
 	Application.Collection.Managementplan = Backbone.Collection.extend({
@@ -14,7 +26,7 @@
 				return _.contains(c.get("connections"), to.get("id"));
 			});
 		},
-		
+
 		initialize: function(models, options){
 			this.options = _.extend(this.defaults, options);
 		},
@@ -24,7 +36,7 @@
 				crossDomain: true,
 			    contentType: "multipart/form-data; boundary=---------------------------7da24f2e50046",
 				data: '-----------------------------7da24f2e50046\r\nContent-Disposition: form-data; name="file"; filename="file.json"\r\nContent-type: plain/text\r\n\r\n' + JSON.stringify(this.toJSON()) + '\r\n-----------------------------7da24f2e50046--\r\n',
-				url: this.options.winery.planFile(), 
+				url: this.options.winery.planFile(),
 				type: "PUT",
 				success: function(){
 					callback();
@@ -57,7 +69,7 @@
 					path.push(element);
 				});
 			}, this);
-			return path;			
+			return path;
 		},
 
 		url: function(){
