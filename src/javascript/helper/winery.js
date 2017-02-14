@@ -154,7 +154,7 @@
 						dataType: "json",
 						success: function(properties){
 							callback(properties.map(function(property){
-								return nodeTemplate.name + "." + property;
+								return nodeTemplate.name + "." + property.key;
 							}));
 						},
 						url: build(this.repository_url, "nodetypes/" + encode(nodeTemplate.namespace) + "/" + encode(nodeTemplate.id) + "/propertiesdefinition/winery/list/"),
