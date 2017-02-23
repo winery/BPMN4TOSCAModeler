@@ -9,7 +9,9 @@
  * Contributors:
  *    Thomas Michelbach - initial API and implementation and/or initial documentation
  *******************************************************************************/
-
+/**
+ * Modifications Copyright 2017 ZTE Corporation.
+ */
 (function(Application){
 
 	Application.View.Canvas = Backbone.View.extend({
@@ -41,14 +43,31 @@
 			this.collection.on("reset", function(collection){
 				this.$el.empty();
 			}, this);
+
+			Application.condition = new Application.Condition(this);
 			jsPlumb.bind("connection", _.bind(function(info, originalEvent){
 				info.connection.setConnector("Flowchart");
 				info.connection.addOverlay([ "Arrow", {direction: 1, foldback:1, location: 1, width: 10, length: 10}]);
+
+				var timer = null; 	// add timer to avoid event error for connection binded click and double click event
 				info.connection.bind("click", function(connection){
-					Backbone.$(connection.source).data("element").trigger("remove_connection", {target: Backbone.$(connection.target).data("element")});
-					jsPlumb.detach(connection);
+					clearTimeout(timer);
+					timer = setTimeout(function () { //
+						Backbone.$(connection.source).data("element").trigger("remove_connection", {target: Backbone.$(connection.target).data("element")});
+						jsPlumb.detach(connection);
+
+					}, 300);
+
+				});
+				info.connection.bind("dblclick", function(connection){
+					clearTimeout(timer);
+					Application.condition.modifyCondition(connection);
 				});
 				this.$el.find("#" + info.sourceId).data("element").trigger("add_connection", {target: this.$el.find("#" + info.targetId).data("element")});
+
+				// set condition info
+				Application.condition.setConditionToLabel(info.connection);
+
 			}, this));
 		},
 
@@ -60,6 +79,15 @@
 					stub: 0,
 					gap: 3
 				}],
+				ConnectionOverlays: [
+					[ "Arrow", {
+						location: 1,
+						id: "arrow",
+						length: 14,
+						foldback: 0.8
+					} ],
+					[ "Label", { label: "", id: "label", cssClass: "aLabel" }]
+				],
 				PaintStyle: {lineWidth: 1}
 			});
 			this.collection.fetch({

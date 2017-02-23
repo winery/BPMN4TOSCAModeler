@@ -9,7 +9,9 @@
  * Contributors:
  *    Thomas Michelbach - initial API and implementation and/or initial documentation
  *******************************************************************************/
-
+/**
+ * Modifications Copyright 2017 ZTE Corporation.
+ */
 (function(Application){
 
 	Application.View.CanvasToolbar = Backbone.View.extend({
@@ -50,8 +52,19 @@
 					+"<div class=\"btn-group\">"
 						+"<button type=\"button\" class=\"btn btn-default item\" data-name=\"StartEvent\" data-type=\"StartEvent\" title=\"Add new Start Event\"><span>Start Event</button>"
 						+"<button type=\"button\" class=\"btn btn-default item\" data-name=\"EndEvent\"data-type=\"EndEvent\" title=\"Add new End Event\"><span>End Event</span></button>"
-						+"<button type=\"button\" class=\"btn btn-default item\" data-type=\"Gateway\" title=\"Add new Parallel Gateway\"><span>Gateway</span></button>"
+						//+"<button type=\"button\" class=\"btn btn-default item\" data-type=\"Gateway\" title=\"Add new Parallel Gateway\"><span>Gateway</span></button>"
 						+"<div class=\"btn-group\">"
+							+"<div class=\"dropdown\" style=\"display: inline-block\">"
+								+"<button type=\"button\" class=\"btn btn-default item\" data-name=\"ExclusiveGateway\" data-type=\"ExclusiveGateway\" data-toggle=\"dropdown\" title=\"Add new ExclusiveGateway\">Gateway&nbsp;<span class=\"caret\"></span></button>"
+								+"<ul class=\"dropdown-menu\">"
+									+"<li><a href=\"#\" class=\"item\" data-type=\"ExclusiveGateway\" data-name=\"ExclusiveGateway\" title=\"Add new ExclusiveGateway \">ExclusiveGateway</a></li>"
+									+"<li><a href=\"#\" class=\"item\" data-type=\"ExclusiveGatewayEnd\" data-name=\"ExclusiveGatewayEnd\" title=\"Add new ExclusiveGatewayEnd \">ExclusiveGatewayEnd</a></li>"
+									+"<li><a href=\"#\" class=\"item\" data-type=\"Gateway\" data-name=\"Gateway\" title=\"Add new Parallel Gateway \">Gateway</a></li>"
+								+"</ul>"
+							+"</div>"
+						+"</div>"
+
+						+"<div class=\"btn-group tasks\">"
 							+"<div class=\"dropdown\" style=\"display: inline-block\">"
 								+"<button type=\"button\" class=\"btn btn-default item\" data-name=\"Unnamed NodeManagementTask\" data-type=\"ToscaNodeManagementTask\" data-toggle=\"dropdown\" title=\"Add new Node Management Task\">Node Management Task&nbsp;<span class=\"caret\"></span></button>"
 								+"<ul class=\"dropdown-menu\"></ul>"
@@ -66,7 +79,7 @@
 
 			this.options.canvas.collection.options.winery.nodeTemplates(_.bind(function(nodeTemplates){
 				_.each(nodeTemplates, function(nodeTemplate){
-					this.$el.find(".dropdown ul").append(
+					this.$el.find(".tasks .dropdown ul").append(
 						"<li><a href=\"#\" class=\"item\" data-type=\"ToscaNodeManagementTask\" data-node_template=\"" + nodeTemplate.name + "\" data-name=\"Unnamed " + nodeTemplate.name + " NodeManagementTask\" title=\"Add new " + nodeTemplate.name + " Node Management Task\">" + nodeTemplate.name + "</a></li>"
 					);
 				}, this);
