@@ -9,13 +9,16 @@
  * Contributors:
  *    Thomas Michelbach - initial API and implementation and/or initial documentation
  *******************************************************************************/
-
+/**
+ * Modifications Copyright 2017 ZTE Corporation.
+ */
 (function(Application){
 
 	Application.Model.Element = Backbone.Model.extend({
 
 		defaults:{
 			connections: [],
+			conditions:[],
 			type: ""
 		},
 
@@ -23,6 +26,16 @@
 			if(!_.contains(this.get("connections"), element)){
 				this.set("connections", _.union(_.clone(this.get("connections")), [element]));
 			}
+
+			var con = _.find(this.get("conditions"), function(condition) {
+				return condition.id == element;
+			});
+
+			if(!con) {
+				var con = {"id" : element, "default":false, "condition":""};
+				this.set("conditions", _.union(_.clone(this.get("conditions")), [con]));
+			}
+
 			return this;
 		},
 
@@ -34,6 +47,10 @@
 			if(_.contains(this.get("connections"), element)){
 				this.set("connections", _.without(_.clone(this.get("connections")), element));
 			}
+
+			this.set("conditions", _.filter(this.get("conditions"), function(condition) {
+				return condition.id !== element;
+			}));
 			return this;
 		},
 

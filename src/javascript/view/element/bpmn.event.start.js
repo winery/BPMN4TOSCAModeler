@@ -60,11 +60,11 @@
 			});
 			dialog.on("show", function(event){
 				event.dialog.$el.find("form").append(
-					"<div class=\"form-group\">
-						<label for=\"\" class=\"col-sm-3 control-label\">Name</label>
-						<div class=\"col-sm-9\"><input type=\"text\" autocomplete=\"off\" class=\"form-control\" id=\"name\" name=\"name\" value=\"" + this.model.get("name") + "\"/></div>
-					</div>
-					<hr/>"
+					"<div class=\"form-group\">"
+						+"<label for=\"\" class=\"col-sm-3 control-label\">Name</label>"
+						+"<div class=\"col-sm-9\"><input type=\"text\" autocomplete=\"off\" class=\"form-control\" id=\"name\" name=\"name\" value=\"" + this.model.get("name") + "\"/></div>"
+					+"</div>"
+					+"<hr/>"
 				);
 				event.dialog.$el.find(".modal-footer .pull-left").append(
 					"<button type=\"button\" class=\"btn btn-default\" data-event=\"append\">Append Input Parameter</button>"
