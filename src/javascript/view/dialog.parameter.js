@@ -136,10 +136,10 @@
 				});
 				dialog.on("show", function(event){
 					event.dialog.$el.find("form").append(
-						"<div class=\"form-group\">
-							<label for=\"\" class=\"col-sm-3 control-label\">Name</label>
-							<div class=\"col-sm-9\"><input type=\"text\" autocomplete=\"off\" class=\"pull right form-control\" id=\"name\" name=\"name\" value=\"" + this.options.name + "\" /></div>
-						</div>"
+						"<div class=\"form-group\">"
+							+"<label for=\"\" class=\"col-sm-3 control-label\">Name</label>"
+							+"<div class=\"col-sm-9\"><input type=\"text\" autocomplete=\"off\" class=\"pull right form-control\" id=\"name\" name=\"name\" value=\"" + this.options.name + "\" /></div>"
+						+"</div>"
 					);
 				});
 				dialog.on("shown", function(event){
@@ -151,24 +151,24 @@
 
 		render: function(){
 			this.$el.append(
-				"<div class=\"form-group parameter " + this.options.direction + " \">
-					<label for=\"\" class=\"col-sm-3 control-label\">" + this.options.name + "</label>
-					<div class=\"col-sm-9\">
-						<div class=\"input-group\">
-							<input type=\"text\" id=\"" + this.options.name + "\" class=\"form-control\" data-type=\"" + this.options.type + "\" data-name=\"" + this.options.name + "\" name=\"" + this.options.name + "\" value=\"" + this.options.value + "\" />
-							<div class=\"input-group-btn\">
-								<button class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" type=\"button\"><span class=\"type\">Action</span>&nbsp;<span class=\"caret\"></span></button>
-								<ul class=\"dropdown-menu\"></ul>
-							</div>
-						</div>
-					</div>
-				</div>"
+				"<div class=\"form-group parameter " + this.options.direction + " \">"
+					+"<label for=\"\" class=\"col-sm-3 control-label\">" + this.options.name + "</label>"
+					+"<div class=\"col-sm-9\">"
+						+"<div class=\"input-group\">"
+							+"<input type=\"text\" id=\"" + this.options.name + "\" class=\"form-control\" data-type=\"" + this.options.type + "\" data-name=\"" + this.options.name + "\" name=\"" + this.options.name + "\" value=\"" + this.options.value + "\" />"
+							+"<div class=\"input-group-btn\">"
+								+"<button class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" type=\"button\"><span class=\"type\">Action</span>&nbsp;<span class=\"caret\"></span></button>"
+								+"<ul class=\"dropdown-menu\"></ul>"
+							+"</div>"
+						+"</div>"
+					+"</div>"
+				+"</div>"
 			).find(".parameter").data("parameter", this);
 
 			_.each(this.options.sources, function(source){
-				this.$el.find(".dropdown-menu").append("
-					<li><a href=\"#\" data-event=\"change\" data-type=\"" + source + "\">" + this.types[source] + "</a></li>
-				");
+				this.$el.find(".dropdown-menu").append(
+					"<li><a href=\"#\" data-event=\"change\" data-type=\"" + source + "\">" + this.types[source] + "</a></li>"
+				);
 			}, this);
 
 			if(this.options.editable){

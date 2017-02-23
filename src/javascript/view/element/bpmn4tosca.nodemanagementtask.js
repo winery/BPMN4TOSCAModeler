@@ -10,6 +10,9 @@
  *    Thomas Michelbach - initial API and implementation and/or initial documentation
  *    Armin Hüneburg - add interface of node_operation to json
  *******************************************************************************/
+/**
+ * Modifications Copyright 2016 ZTE Corporation.
+ */
 
 (function(Application){
 
@@ -50,21 +53,21 @@
 				this.model.set(data);
 			});
 			dialog.on("show", function(event){
-				event.dialog.$el.find("form").append("
-					<div class=\"form-group\">
-						<label for=\"\" class=\"col-sm-3 control-label\">Name</label>
-						<div class=\"col-sm-9\"><input type=\"text\" autocomplete=\"off\" class=\"form-control\" id=\"name\" name=\"name\" value=\"" + this.model.get("name") + "\" /></div>
-					</div>
-					<div class=\"form-group\">
-						<label for=\"node_template\" class=\"col-sm-3 control-label\">Node Template</label>
-						<div class=\"col-sm-9\"><input type=\"text\" autocomplete=\"off\" class=\"form-control\" id=\"node_template\" name=\"node_template\" /></div>
-					</div>
-					<div class=\"form-group\">
-						<label for=\"node_operation\" class=\"col-sm-3 control-label\">Node Operation</label>
-						<div class=\"col-sm-9\"><input type=\"text\" autocomplete=\"off\" class=\"form-control\" id=\"node_operation\" name=\"node_operation\" /></div>
-					</div>
-					<hr/>
-				");
+				event.dialog.$el.find("form").append(
+					"<div class=\"form-group\">"
+						+"<label for=\"\" class=\"col-sm-3 control-label\">Name</label>"
+						+"<div class=\"col-sm-9\"><input type=\"text\" autocomplete=\"off\" class=\"form-control\" id=\"name\" name=\"name\" value=\"" + this.model.get("name") + "\" /></div>"
+					+"</div>"
+					+"<div class=\"form-group\">"
+						+"<label for=\"node_template\" class=\"col-sm-3 control-label\">Node Template</label>"
+						+"<div class=\"col-sm-9\"><input type=\"text\" autocomplete=\"off\" class=\"form-control\" id=\"node_template\" name=\"node_template\" /></div>"
+					+"</div>"
+					+"<div class=\"form-group\">"
+						+"<label for=\"node_operation\" class=\"col-sm-3 control-label\">Node Operation</label>"
+						+"<div class=\"col-sm-9\"><input type=\"text\" autocomplete=\"off\" class=\"form-control\" id=\"node_operation\" name=\"node_operation\" /></div>"
+					+"</div>"
+					+"<hr/>"
+				);
 			});
 			dialog.on("shown", function(event){
 				var nodeOperationDropdown = event.dialog.$el.find("#node_operation").selectize({

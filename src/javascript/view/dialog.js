@@ -64,26 +64,26 @@
 		},
 
 		render: function(){
-			this.$el.html('
-				<div class="modal fade" id="' + this.options.id + '" tabindex="-1" role="dialog">
-					<div class="modal-dialog modal-md">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close"><span>&times;</span><span class="sr-only">Close</span></button>
-								<h4 class="modal-title">' + this.options.title + '</h4>
-							</div>
-							<div class="modal-body"><form class="form-horizontal"></form></div>
-							<div class="modal-footer">
-								<div class="pull-left"></div>
-								<div class="pull-right">
-									<button type="button" class="btn btn-danger" data-event="cancel">Cancel</button>
-									<button type="button" class="btn btn-success" data-event="confirm">OK</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			');
+			this.$el.html(
+				'<div class="modal fade" id="' + this.options.id + '" tabindex="-1" role="dialog">'
+					+'<div class="modal-dialog modal-md">'
+						+'<div class="modal-content">'
+							+'<div class="modal-header">'
+								+'<button type="button" class="close"><span>&times;</span><span class="sr-only">Close</span></button>'
+								+'<h4 class="modal-title">' + this.options.title + '</h4>'
+							+"</div>"
+							+'<div class="modal-body"><form class="form-horizontal"></form></div>'
+							+'<div class="modal-footer">'
+								+'<div class="pull-left"></div>'
+								+'<div class="pull-right">'
+									+'<button type="button" class="btn btn-danger" data-event="cancel">Cancel</button>'
+									+'<button type="button" class="btn btn-success" data-event="confirm">OK</button>'
+								+"</div>"
+							+"</div>"
+						+"</div>"
+					+"</div>"
+				+"</div>"
+			);
 			return this;
 		},
 
