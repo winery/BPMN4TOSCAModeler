@@ -1,3 +1,5 @@
+**The modeler was reimplemented by ZTE is now included in Eclipse Winery - see https://github.com/eclipse/winery/pull/51 and http://eclipse.github.io/winery/user/**
+
 # BPMN4TOSCA 2.0 Modeler
 
 This project is an implementation of a BPMN4TOSCA plan modeler for creating and maintaining [TOSCA] compatible management plans.
